@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Game Example</title>
+  <style>
+    /* define styles for the game elements */
+    #game {
+      width: 400px;
+      height: 400px;
+      background-color: #ccc;
+      position: relative;
+    }
+    
+    #player {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      position: absolute;
+    }
+    
+    #target {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <!-- create the game container -->
+  <div id="game">
+    <!-- create the player element -->
+    <div id="player"></div>
+    <!-- create the target element -->
+    <div id="target"></div>
+  </div>
+  
+  <script>
+    // get the player and target elements
+    const player = document.getElementById('player');
+    const target = document.getElementById('target');
+    
+    // set the initial positions of the player and target
+    player.style.top = '200px';
+    player.style.left = '200px';
+    target.style.top = '100px';
+    target.style.left = '100px';
+    
+    // listen for keyboard events
+    document.addEventListener('keydown', (event) => {
+      // move the player in the direction of the arrow key pressed
+      if (event.key === 'ArrowUp') {
+        player.style.top = `${parseInt(player.style.top) - 10}px`;
+      } else if (event.key === 'ArrowDown') {
+        player.style.top = `${parseInt(player.style.top) + 10}px`;
+      } else if (event.key === 'ArrowLeft') {
+        player.style.left = `${parseInt(player.style.left) - 10}px`;
+      } else if (event.key === 'ArrowRight') {
+        player.style.left = `${parseInt(player.style.left) + 10}px`;
+      }
+      
+      // check if the player has reached the target
+      if (player.style.top === target.style.top && player.style.left === target.style.left) {
+        alert('You win!');
+      }
+    });
+  </script>
+</body>
+</html>
